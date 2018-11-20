@@ -18,7 +18,7 @@ html, button, input, select, textarea,
   font-family: "PingFangSC-Regular", Helvetica, "Helvetica Neue", "Segoe UI", "Hiragino Sans GB", "Source Han Sans CN", "Microsoft YaHei", "STHeiti", "WenQuanYi Micro Hei", sans-serif !important; }
 
 body {
-  background-color: #FFF;
+  background-color: #FFFFF0;
   color: #444;
   font-family: "TIBch", "Classic Grotesque W01", "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -381,12 +381,12 @@ blockquote, .stressed {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 2.5em 0;
-  padding: 0 0 0 50px;
+  padding: 0 0 0 10px;
   color: #555;
-  border-left: none; }
+  background: #F9F9F9;
+  border-left: 4px solid #b4b4b4; }
 
 blockquote::before, .stressed-quote::before {
-  content: "\201C";
   display: block;
   font-family: times;
   font-style: normal;
