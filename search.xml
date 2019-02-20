@@ -3,6 +3,23 @@
   
     
     <entry>
+      <title>数据结构与算法(一)————综述</title>
+      <link href="/2019/02/20/dataStructure/"/>
+      <url>/2019/02/20/dataStructure/</url>
+      
+        <content type="html"><![CDATA[<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p><strong>数据结构就是指一组数据的存储结构。<br>算法就是操作数据的一组方法。<br>数据结构是为算法服务的，算法要作用在特定的数据结构之上。</strong></p><p><strong>数据结构与算法中最重要的概念：<font color="red">复杂度分析</font></strong><br><strong>最常用、最基础的 20 个数据结构与算法：</strong><br>数据结构：数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Tire树(字典树)<br>算法： 递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法</p><h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><p>复杂度也叫渐进复杂度，包括时间复杂度和空间复杂度，用来分析算法执行效率与数据规模之间的增长关系，可以粗略地表示，越高阶复杂度的算法，执行效率越低。<br>复杂度分析表示效率和资源消耗的度量衡。</p><p><strong>为什么要进行复杂度分析</strong><br>1.和性能测试相比，复杂度分析有不依赖执行环境、成本低、效率高、易操作、指导性强的特点。<br>2.掌握复杂度分析，将能编写出性能更优的代码，有利于降低系统开发和维护成本。</p><p><strong>复杂度分析法则</strong></p><blockquote><p>单段代码看高频：比如循环。<br>多段代码取最大：比如一段代码中有单循环和多重循环，那么取多重循环的复杂度。<br>嵌套代码求乘积：比如递归、多重循环等<br>多个规模求加法：比如方法有两个参数控制两个循环的次数，那么这时就取二者复杂度相加。</p></blockquote><h3 id="大-O-复杂度表示法’"><a href="#大-O-复杂度表示法’" class="headerlink" title="大 O 复杂度表示法’"></a>大 O 复杂度表示法’</h3><p><strong>算法的执行时间 T(n) 与每行代码的执行次数 n 成正比</strong><br>            $$T(n) = O( f(n) )$$<br>    T(n)：代码执行的时间；<br>    n：表示数据规模的大小；<br>    f(n)：表示每行代码执行的次数总和</p><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> cal(<span class="keyword">int</span> n) &#123;</span><br><span class="line"><span class="keyword">int</span> <span class="keyword">sum</span> = <span class="number">0</span>;</span><br><span class="line"> <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line"><span class="keyword">sum</span> = <span class="keyword">sum</span> + i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">sum</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>时间复杂度为：$$T(n) = O(2n+2)$$</p><p>当 n 很大时，公式中的低阶、常量、系数三部分并不左右增长趋势，所以都可以忽略。<br>    $$T(n) = O(2n+2)  -&gt;  T(n) =O(n)$$</p><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>大 O 时间复杂度实际上并不具体表示代码真正的执行时间，而是表示代码执行时间随数据规模增长的变化趋势，所以，也叫作渐进时间复杂度（asymptotic time complexity），简称时间复杂度。</p><blockquote><p>只关注循环执行次数最多的一段<br>加法法则：总复杂度等于量级最大的那段代码的复杂度<br>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的积</p></blockquote><p><strong>复杂度量级</strong><br>| :——–: |:——–| :——–: |:———-| :——–: |:———-|<br>|   常量阶   |  O(1)   |   指数阶   |   O(2^n)  |   对数阶   |  O(logn)  |<br>|   阶乘阶   |  O(n!)  |   线性阶   |   O(n)    | 线性对数阶 |  O(nlogn) |<br>|   平方阶   |  O(n^2) |   立方阶   |   O(n^3)  |   k次方阶  |  O(n^k)   |   </p><p><strong>非多项式量级:</strong> <code>O(2^n)</code> 和 <code>O(n!)</code><br>时间复杂度为非多项式量级的算法问题叫作 NP（Non-Deterministic Polynomial，非确定多项式）问题。<br>当数据规模 n 越来越大时，非多项式量级算法的执行时间会急剧增加，求解问题的执行时间会无限增长。所以，非多项式时间复杂度的算法其实是非常低效的算法。</p><p><strong>复杂度分析的4个概念</strong><br>1.最好情况时间复杂度（best case time complexity）：代码在最理想情况下执行的时间复杂度  O(1)。<br>2.最坏情况时间复杂度（worst case time complexity）：代码在最坏情况下执行的时间复杂度  O(n)。<br>3.平均情况时间复杂度（average case time complexity）：代码在所有情况下执行的次数的加权平均值表示，代码在不同情况下复杂度出现量级差别时使用。<br>4.均摊时间复杂度（amortized time complexity）：代码在大部分情况下时间复杂度都很低，个别情况下时间复杂度比较高，操作之间存在前后连贯的时序关系，将较高时间复杂度的耗时，平摊到时间复杂度比较低的操作上。基本上均摊结果就等于低级别复杂度 O(1)。(使用摊还分析法计算)</p><p><strong>为什么要引入这4个概念？</strong><br>1.同一段代码在不同情况下时间复杂度会出现量级差异，为了更全面，更准确的描述代码的时间复杂度，所以引入这4个概念。<br>2.代码复杂度在不同情况下出现量级差别时才需要区别这四种复杂度。大多数情况下，是不需要区别分析它们的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>知识的诅咒</title>
       <link href="/2019/02/15/knowledgeCurse/"/>
       <url>/2019/02/15/knowledgeCurse/</url>
