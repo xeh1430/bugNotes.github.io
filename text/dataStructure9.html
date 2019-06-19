@@ -17,16 +17,19 @@
 <p>操作：需要进行两次变换（旋转），图中只显示了一次变换—–首先 P、N 变换，颜色不变；然后就变成了情况5的情况，按照情况4操作，即结束。<br><img src="https://xeh1430.github.io/img/rbt_case2.png" alt> </p>
 <p><strong>情况5：</strong>N 为红，P 为红，U 为黑，P 为 G 的左孩子，N 为 P 的左孩子（或者 P 为 G 的右孩子，N 为 P 的左孩子；反正就是同向的）。</p>
 <p>操作：P、G 变色，P、G 变换即左左单旋（或者右右单旋），结束。<br><img src="https://xeh1430.github.io/img/rbt_case3.png" alt> </p>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p><strong>情况1：</strong>S 为红色（那么父节点 P 一定是黑，子节点一定是黑），N 是 P 的左孩子（或者 N 是 P 的右孩子）。</p>
-<p>操作：P、S 变色，并交换—-相当于 AVL 中的右右中旋转即以 P 为中心 S 向左旋（或者是 AVL 中的左左中的旋转），未结束。<br><img src="https://xeh1430.github.io/img/rbt_case4.png" alt> </p>
-<p><strong>情况2：</strong>P、S 及 S 的孩子们都为黑。</p>
-<p>操作：S 改为红色，未结束。<br><img src="https://xeh1430.github.io/img/rbt_case5.png" alt> </p>
-<p>情况3：P 为红（S 一定为黑），S 的孩子们都为黑。</p>
-<p>操作：P该为黑，S改为红，结束。<br><img src="https://xeh1430.github.io/img/rbt_case6.png" alt> </p>
-<p>情况4：P 任意色，S 为黑，N 是 P 的左孩子，S 的右孩子 SR 为红，S 的左孩子任意（或者是 N 是 P 的右孩子，S 的左孩子为红，S 的右孩子任意）。</p>
-<p>操作：SR（SL）改为黑，P 改为黑，S 改为 P 的颜色，P、S变换–这里相对应于 AVL 中的右右中的旋转（或者是 AVL 中的左左旋转），结束。<br><img src="https://xeh1430.github.io/img/rbt_case7.png" alt> </p>
-<p>情况5：P 任意色，S 为黑，N 是 P 的左孩子，S 的左孩子 SL 为红，S 的右孩子 SR 为黑（或者 N 是P的有孩子，S 的右孩子为红，S 的左孩子为黑）。</p>
-<p>操作：SL（或SR）改为黑，S 改为红，SL（SR）、S 变换；此时就回到了情况4，SL（SR）变成了黑 S，S 变成了红 SR（SL），做情况4的操作即可，这两次变换，其实就是对应 AVL 的右左的两次旋转（或者是 AVL 的左右的两次旋转）。<br><img src="https://xeh1430.github.io/img/rbt_case8.png" alt> </p>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p><strong>如果需要删除的节点有两个儿子，那么问题可以被转化成删除另一个只有一个儿子的节点的问题，下面只讨论删除只有一个子节点的问题</strong><br><strong><font color="red">情况2-6图中，N 都是是删除了黑色节点后替换上来的子节点</font></strong></p>
+<p><strong>情况1：</strong>要删除 N ，N 为根节点，直接删除，新的根节点为黑色。</p>
+<p><strong>情况2：</strong>S 为红色（那么父节点 P 一定是黑，子节点一定是黑），N 是 P 的左孩子（或者 N 是 P 的右孩子）。</p>
+<p>操作：以 P 为中心左旋，S 变为祖节点，P、S 颜色对调，违法性质5，未结束，接下来按情况4、情况5或情况6来处理。</p>
+<p><img src="https://xeh1430.github.io/img/rbt_case4.png" alt> </p>
+<p><strong>情况3：</strong>P、S 及 S 的孩子们都为黑。</p>
+<p>操作：S 改为红色，接着按情况2做处理。<br><img src="https://xeh1430.github.io/img/rbt_case5.png" alt> </p>
+<p><strong>情况4：</strong>P 为红（S 一定为黑），S 的孩子们都为黑。</p>
+<p>操作：P变为黑，S改为红，结束。<br><img src="https://xeh1430.github.io/img/rbt_case6.png" alt> </p>
+<p><strong>情况5：</strong>P 任意色，S 为黑，N 是 P 的左孩子，S 的右孩子 SR 为红，S 的左孩子任意（或者是 N 是 P 的右孩子，S 的左孩子为红，S 的右孩子任意）。</p>
+<p>操作：SR（SL）改为黑，P 改为黑，S 改为 P 的颜色，p 左旋，结束。<br><img src="https://xeh1430.github.io/img/rbt_case7.png" alt> </p>
+<p><strong>情况6：</strong>S 为黑，S 的左孩子 SL 为红，S 的右孩子 SR 为黑（或者 S 的右孩子为红，S 的左孩子为黑）。</p>
+<p>操作：SL（或SR）改为黑，S 改为红，SL（SR）、S 右旋（左旋）；此时就回到了情况5，SL（SR）变成了黑 S，S 变成了红。<br><img src="https://xeh1430.github.io/img/rbt_case8.png" alt> </p>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><p><strong>java 中的 treeMap</strong></p>
 <p><strong>JDK1.8中 HashMap 在单链表冲突后采用红黑树提高查找插入的效率</strong></p>
 <p><strong>参考</strong><br><a href="https://zh.wikipedia.org/wiki/红黑树" target="_blank" rel="noopener">维基百科的红黑树</a><br><a href="https://www.cnblogs.com/fornever/archive/2011/12/02/2270692.html" target="_blank" rel="noopener">博客园-红黑树</a></p>
